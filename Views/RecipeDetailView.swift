@@ -21,9 +21,10 @@ struct RecipeDetailView: View {
                     Text("   Ingredients:")
                         .font(.headline)
                         .padding(.bottom)
-                    ForEach (recipe.ingredients, id: \.self ){ r in
-                        Text("· " + r)
+                    ForEach (recipe.ingredients) { item in
+                        Text("• " + item.name)
                     }
+                     
                 }
                 
                 Divider()
