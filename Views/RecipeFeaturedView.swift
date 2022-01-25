@@ -12,12 +12,64 @@ struct RecipeFeaturedView: View {
     @EnvironmentObject var model: RecipeModel
     
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        
+        VStack (alignment: .leading, spacing: 0 ) {
+            
+            Text("Featured Recipe:")
+                .bold()
+                .padding(.leading)
+                .padding(.top)
+                .font(.title )
+            
+            GeometryReader{ geo in
+                TabView{
+                    ForEach(0..<model.recipes.count){ index in
+                        if model.recipes[index].featured == true {
+                            ZStack {
+                                Rectangle()
+                                    .foregroundColor(.white)
+                                
+                                VStack{
+                                    Image("lasagna")
+                                        .resizable()
+                                        .clipped()
+                                    Text("Lasagna")
+                                        .padding(8)
+                                }
+                            }
+                            .frame(width: geo.size.width-40, height: geo.size.height-100, alignment: .center)
+                            .cornerRadius(20)
+                             
+                            
+                        }
+                    }
+                }
+                .tabViewStyle(PageTabViewStyle(indexDisplayMode: .automatic))
+                .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .always))
+            }
+            
+            VStack(alignment: .leading , spacing: 8){
+                Text("Preparation Time")
+                    .font(.headline)
+                Text("1 hour")
+                Text("Highlights")
+                    .font(.headline)
+                Text("Healthy, Hearty")
+                
+                
+            }
+            .padding(.leading)
+            .padding(.bottom)
+            
+        }
+        
+        
     }
 }
 
 struct RecipeFeaturedView_Previews: PreviewProvider {
     static var previews: some View {
         RecipeFeaturedView()
+            .environmentObject(RecipeModel())
     }
 }
