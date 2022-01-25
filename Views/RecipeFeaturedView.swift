@@ -30,16 +30,16 @@ struct RecipeFeaturedView: View {
                                     .foregroundColor(.white)
                                 
                                 VStack{
-                                    Image("lasagna")
+                                    Image(model.recipes[index].image)
                                         .resizable()
                                         .clipped()
-                                    Text("Lasagna")
+                                    Text(model.recipes[index].name)
                                         .padding(8)
                                 }
                             }
                             .frame(width: geo.size.width-40, height: geo.size.height-100, alignment: .center)
                             .cornerRadius(20)
-                             
+                            .shadow(color: .black, radius: 10, x: -5, y: 5)
                             
                         }
                     }
