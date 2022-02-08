@@ -24,29 +24,26 @@ struct RecipeListViews: View {
                 ScrollView {
                     LazyVStack (alignment: .leading){
                         ForEach (model.recipes) { r in
-                                
-                                NavigationLink(
-                                    destination: RecipeDetailView(recipe: r),
+                            NavigationLink(
+                                destination: RecipeDetailView(recipe: r),
                                     label: {
-                                        HStack {
-                                            Image(r.image)
-                                                .resizable()
-                                                .scaledToFill()
-                                                .frame(width: 65, height: 60)
-                                                .clipped()
-                                                .cornerRadius(8)
-                                                 
-                                                    
-                                                Text(r.name)
-                                                .foregroundColor(.black)
-                                                .font(.headline)
-                                            }
+                                HStack {
+                                    Image(r.image)
+                                        .resizable()
+                                        .scaledToFill()
+                                        .frame(width: 65, height: 60)
+                                        .clipped()
+                                        .cornerRadius(8)
+
+                                    Text(r.name)
+                                        .foregroundColor(.black)
+                                        .font(.headline)
                                     }
-                                    )
-                            }
-                                            }
+                                }
+                            )
+                        }
+                    }
                 }
-                
             }
             .navigationBarHidden(true)
             .padding(.leading)
